@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Başkent Rot-Balans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .logo span {
+            color: #ff6b00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff6b00;
+        }
+        
+        .randevu-button {
+            background-color: #333;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .randevu-button:hover {
+            background-color: #222;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #333;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .hero-button {
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .hero-button:hover {
+            background-color: #e56000;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 50px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 28px;
+            color: #333;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #ff6b00;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .service-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .detail-button {
+            background-color: white;
+            color: #333;
+            border: 1px solid #333;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .detail-button:hover {
+            background-color: #333;
+            color: white;
+        }
+        
+        /* Brands Section */
+        .brands {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .brands-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .brand-item {
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background-color: #ff6b00;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: #ff6b00;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Service Detail Pages */
+        .service-detail {
+            padding: 50px 0;
+            display: none;
+        }
+        
+        .service-detail.active {
+            display: block;
+        }
+        
+        .back-button {
+            background-color: #333;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        
+        .service-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* Main Page */
+        .main-page {
+            display: block;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">BAŞKENT <span>ROT-BALANS</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('main-page')">Ana Sayfa</a></li>
+                        <li><a href="#services" onclick="showPage('main-page')">Hizmetlerimiz</a></li>
+                        <li><a href="#brands" onclick="showPage('main-page')">Markalar</a></li>
+                        <li><a href="#" onclick="showPage('main-page')">İletişim</a></li>
+                    </ul>
+                </nav>
+                <button class="randevu-button" onclick="alert('Randevu formu açılacak')">RANDEVU AL</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Page Content -->
+    <div id="main-page" class="main-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>PROFESYONEL OTOMOBİL BAKIM</h1>
+                <p>Lastik ve Rot Balans Hizmetlerinde Uzman Ekip</p>
+                <button class="hero-button" onclick="alert('Randevu formu açılacak')">RANDEVU AL</button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>HİZMETLERİMİZ</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Rot Balans</h3>
+                        <p>Profesyonel ekipmanlar ile hassas ayarım</p>
+                        <button class="detail-button" onclick="showPage('rot-balans-detail')">DETAY</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Lastik Tamiri</h3>
+                        <p>Hızlı ve güvenilir lastik tamiri</p>
+                        <button class="detail-button" onclick="showPage('lastik-tamiri-detail')">DETAY</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Jant Düzeltme</h3>
+                        <p>Profesyonel jant onarım teknolojisi</p>
+                        <button class="detail-button" onclick="showPage('jant-duzeltme-detail')">DETAY</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Far Ayarı</h3>
+                        <p>Profesyonel far ayarı ve optimizasyon</p>
+                        <button class="detail-button" onclick="showPage('far-ayari-detail')">DETAY</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>Lastik Oteli</h3>
+                        <p>Mevsimlik lastik saklama hizmeti</p>
+                        <button class="detail-button" onclick="showPage('lastik-oteli-detail')">DETAY</button>
+                    </div>
+                    <div class="service-card">
+                        <h3>TPMS</h3>
+                        <p>Lastik basınç sensörü sistemleri</p>
+                        <button class="detail-button" onclick="showPage('tpms-detail')">DETAY</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section id="brands" class="brands">
+            <div class="container">
+                <div class="section-title">
+                    <h2>ÇALIŞTIĞIMIZ MARKALAR</h2>
+                </div>
+                <div class="brands-grid">
+                    <div class="brand-item">Bridgestone</div>
+                    <div class="brand-item">Lassa</div>
+                    <div class="brand-item">Dayton</div>
+                    <div class="brand-item">Michelin</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <button class="cta-button" onclick="alert('Randevu formu açılacak')">RANDEVU ALIN</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Service Detail Pages -->
+    <div id="rot-balans-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>Rot Balans Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="Rot Balans">
+                <p>Başkent Rot-Balans olarak, aracınızın yol tutuşunu ve sürüş konforunu en üst düzeye çıkarmak için profesyonel rot balans hizmeti sunuyoruz. Uzman ekibimiz ve modern ekipmanlarımızla, aracınızın tekerlek düzenini hassas bir şekilde ayarlıyoruz.</p>
+                <p>Rot balans ayarı, aracınızın tekerleklerinin doğru açıda ve hizada olmasını sağlayan önemli bir bakım işlemidir. Düzgün yapılmayan rot balans ayarı, lastiklerin düzensiz aşınmasına, yakıt tüketiminin artmasına ve sürüş konforunun azalmasına neden olabilir.</p>
+                <p>Hizmetimiz kapsamında:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Tekerlek düzeni kontrolü</li>
+                    <li>Camber, caster ve toe açılarının ayarlanması</li>
+                    <li>Direksiyon sisteminin kontrolü</li>
+                    <li>Süspansiyon bileşenlerinin incelenmesi</li>
+                    <li>Bilgisayar destekli hassas ölçüm ve ayar</li>
+                </ul>
+                <p>Rot balans ayarı, düzenli olarak veya aracınızda aşağıdaki belirtiler görüldüğünde yaptırılmalıdır:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Direksiyon titremesi</li>
+                    <li>Aracın bir tarafa çekmesi</li>
+                    <li>Lastiklerde düzensiz aşınma</li>
+                    <li>Virajlarda anormal sesler</li>
+                </ul>
+                <p>Başkent Rot-Balans farkıyla, aracınızın rot balans ayarını güvenle yaptırabilir, sürüş konforunuzu artırabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lastik-tamiri-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>Lastik Tamiri Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="Lastik Tamiri">
+                <p>Başkent Rot-Balans olarak, lastik tamiri konusunda hızlı ve güvenilir hizmet sunmaktayız. Profesyonel ekibimiz ve modern ekipmanlarımızla, lastiklerinizdeki sorunları en kısa sürede çözüyoruz.</p>
+                <p>Lastiğinizde çivi, vida gibi yabancı cisimler, yırtıklar veya hava kaçakları gibi sorunlar yaşıyorsanız, uzman ekibimiz en uygun çözümü sunacaktır. Kullandığımız yüksek kaliteli malzemeler ve teknikler sayesinde, tamir edilen lastikleriniz güvenli bir şekilde kullanılmaya devam edilebilir.</p>
+                <p>Lastik tamiri hizmetlerimiz:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Patlak lastik tamiri</li>
+                    <li>Yabancı cisim çıkarma</li>
+                    <li>İç lastik tamiri</li>
+                    <li>Sibop değişimi</li>
+                    <li>Lastik yaması</li>
+                    <li>Hava kaçağı tespiti ve giderimi</li>
+                </ul>
+                <p>Lastik tamiri, trafik güvenliği açısından kritik bir öneme sahiptir. Profesyonel olmayan tamirler, sürüş sırasında ciddi tehlikelere yol açabilir. Bu nedenle, lastik tamiri konusunda uzman olan Başkent Rot-Balans'ı tercih ederek, güvenliğinizi riske atmayın.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="jant-duzeltme-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>Jant Düzeltme Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="Jant Düzeltme">
+                <p>Başkent Rot-Balans olarak, jant düzeltme konusunda profesyonel hizmet sunmaktayız. Çarpma, çukur veya kaldırım taşlarına sürtünme sonucu deforme olan jantlarınızı, ileri teknoloji ekipmanlarımızla orijinal formuna kavuşturuyoruz.</p>
+                <p>Jant hasarları, sadece görsel açıdan değil, aynı zamanda aracınızın sürüş performansı ve güvenliği açısından da önemli sorunlara yol açabilir. Deforme olmuş jantlar, titreşim, balans bozukluğu ve lastik aşınması gibi problemlere neden olabilir.</p>
+                <p>Jant düzeltme hizmetlerimiz:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Jant çarpıklığı düzeltme</li>
+                    <li>Jant çatlak tamiri</li>
+                    <li>Jant yüzey düzeltme</li>
+                    <li>Jant balans ayarı</li>
+                    <li>Aluminyum ve çelik jant tamiri</li>
+                </ul>
+                <p>Başkent Rot-Balans'ta, jant düzeltme işlemleri özel makineler ve deneyimli ustalar tarafından gerçekleştirilir. Jantlarınızın orijinal formuna ve görünümüne kavuşması için bizi tercih edebilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="far-ayari-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>Far Ayarı Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="Far Ayarı">
+                <p>Başkent Rot-Balans olarak, profesyonel far ayarı hizmeti sunmaktayız. Doğru ayarlanmış farlar, gece sürüşlerinde güvenliğinizi artırır ve karşıdan gelen sürücüleri rahatsız etmez.</p>
+                <p>Far ayarı, aracınızın farlarının doğru açıda ve yükseklikte olmasını sağlayan önemli bir bakım işlemidir. Yanlış ayarlanmış farlar, görüş mesafenizi azaltabilir veya karşıdan gelen sürücüleri rahatsız edebilir.</p>
+                <p>Far ayarı hizmetlerimiz:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Far yükseklik ayarı</li>
+                    <li>Far açı ayarı</li>
+                    <li>Far odak ayarı</li>
+                    <li>Far sisteminin kontrolü</li>
+                    <li>Xenon, LED ve halojen farlar için özel ayarlar</li>
+                </ul>
+                <p>Aşağıdaki durumlarda far ayarı yaptırmanızı öneririz:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Gece sürüşlerinde görüş mesafenizin azaldığını hissediyorsanız</li>
+                    <li>Karşıdan gelen sürücüler sık sık selektör yapıyorsa</li>
+                    <li>Farlarınızı değiştirdiyseniz</li>
+                    <li>Aracınızın ön süspansiyonunda değişiklik yapıldıysa</li>
+                </ul>
+                <p>Başkent Rot-Balans'ta, far ayarınızı profesyonel ekipmanlarla ve deneyimli ustalarımızla kolayca yaptırabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="lastik-oteli-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>Lastik Oteli Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="Lastik Oteli">
+                <p>Başkent Rot-Balans olarak, mevsimlik lastik saklama hizmeti sunmaktayız. Kış ve yaz lastiklerinizi, uygun koşullarda saklayarak, lastiklerinizin ömrünü uzatıyor ve size depolama kolaylığı sağlıyoruz.</p>
+                <p>Lastik oteli hizmeti, özellikle kış ve yaz lastiklerini düzenli olarak değiştiren araç sahipleri için ideal bir çözümdür. Kullanılmayan lastiklerinizi evde veya garajda saklamak yerine, profesyonel koşullarda saklayarak, lastiklerinizin ömrünü uzatabilirsiniz.</p>
+                <p>Lastik oteli hizmetimiz kapsamında:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Lastiklerinizin temizlenmesi ve kontrolü</li>
+                    <li>Doğru hava koşullarında ve uygun sıcaklıkta saklama</li>
+                    <li>Lastiklerin düzenli olarak yerinin değiştirilmesi</li>
+                    <li>Lastiklerin dikey pozisyonda saklanması</li>
+                    <li>Güvenli ve sigortalı depolama</li>
+                </ul>
+                <p>Lastik oteli hizmetimizden yararlanmak için, mevsim değişimlerinde bize uğrayabilir ve lastiklerinizi güvenle saklamamızı sağlayabilirsiniz. Bir sonraki mevsimde, lastiklerinizi kontrol ederek ve gerekirse bakımını yaparak size teslim ediyoruz.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tpms-detail" class="service-detail">
+        <div class="container">
+            <button class="back-button" onclick="showPage('main-page')">← Geri Dön</button>
+            <div class="service-content">
+                <h2>TPMS (Lastik Basınç Sensörü) Hizmeti</h2>
+                <img class="service-image" src="/api/placeholder/800/400" alt="TPMS">
+                <p>Başkent Rot-Balans olarak, TPMS (Lastik Basınç İzleme Sistemi) konusunda profesyonel hizmet sunmaktayız. Bu sistem, aracınızın lastik basıncını sürekli olarak izler ve basınç düşüşü durumunda sizi uyarır.</p>
+                <p>TPMS, sürüş güvenliğinizi artıran ve lastik ömrünü uzatan önemli bir sistemdir. Düşük lastik basıncı, yakıt tüketimini artırır, lastik aşınmasını hızlandırır ve sürüş güvenliğini tehlikeye atar.</p>
+                <p>TPMS hizmetlerimiz:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>TPMS sensörü satışı ve montajı</li>
+                    <li>TPMS sensörü programlama</li>
+                    <li>TPMS sistem arıza tespiti ve giderimi</li>
+                    <li>TPMS batarya değişimi</li>
+                    <li>TPMS sensörü kalibrasyonu</li>
+                </ul>
+                <p>TPMS sisteminin düzgün çalışması, lastik basıncınızın optimum seviyede tutulmasını sağlar. Bu da yakıt tasarrufu, lastik ömrünün uzaması ve sürüş güvenliğinin artması anlamına gelir.</p>
+                <p>Başkent Rot-Balans'ta, TPMS konusunda uzman ekibimiz ve modern ekipmanlarımızla hizmetinizdeyiz. TPMS ile ilgili her türlü sorun ve ihtiyacınız için bize başvurabilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="contact-info">
+                    <p>Ufuk TUFAN: 0545 473 70 28 | Murat AKBAY: 0544 041 59 29</p>
+                    <p>Başkent San. Sit. 1813. Sok. No: 31 Ergazî Yenimahalle, ANKARA | Tel: 0312 278 03 66</p>
+                </div>
+                <div class="copyright">
+                    © 2025 Başkent Rot-Balans. Tüm Hakları Saklıdır.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.service-detail').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            document.getElementById('main-page').style.display = 'none';
+            
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
