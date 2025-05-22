@@ -450,6 +450,208 @@ body.dark-mode .form-group textarea {
 body.dark-mode .no-comments {
     color: #b0b0b0;
 }
+/* Buraya kadar olan mevcut CSS stilleriniz */
+
+/* Comments Section - BU KISMI EKLEYİN */
+.comments {
+    padding: 50px 0;
+    background-color: #f5f5f5;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.comments-list {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comment {
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 15px;
+}
+
+.comment:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 0.9em;
+}
+
+.comment-body {
+    color: #666;
+    line-height: 1.5;
+}
+
+.comment-form {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comment-form h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.submit-button {
+    background-color: #ff6b00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #e65c00;
+}
+
+.no-comments {
+    padding: 15px;
+    color: #666;
+    font-style: italic;
+}
+
+.delete-comment {
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-comment:hover {
+    background-color: #d73229;
+}
+
+.delete-all-button {
+    background-color: #ff3b30;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    width: 100%;
+}
+
+.delete-all-button:hover {
+    background-color: #d73229;
+}
+
+/* Dark Mode için yorumlar kısmı stilleri */
+body.dark-mode .comments {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .comments-list,
+body.dark-mode .comment-form {
+    background-color: #2d2d2d;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .comment {
+    border-bottom: 1px solid #444;
+}
+
+body.dark-mode .comment-author {
+    color: #e0e0e0;
+}
+
+body.dark-mode .comment-date {
+    color: #888;
+}
+
+body.dark-mode .comment-body {
+    color: #b0b0b0;
+}
+
+body.dark-mode .comment-form h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #3d3d3d;
+    border: 1px solid #555;
+    color: #e0e0e0;
+}
+
+body.dark-mode .no-comments {
+    color: #b0b0b0;
+}
+
+body.dark-mode .delete-comment,
+body.dark-mode .delete-all-button {
+    background-color: #cc2e25;
+}
+
+body.dark-mode .delete-comment:hover,
+body.dark-mode .delete-all-button:hover {
+    background-color: #b32820;
+}
+/* CSS YORUMLAR KISMI BİTİŞİ */
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Bundan sonraki mevcut Dark Mode stilleriniz */
         /* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212;
@@ -618,13 +820,685 @@ input:checked + .slider:before {
     transform: scale(1.1);
 }
 
+
     </style>
 </head>
 <body>
+    <!-- HTML kodu - <body> etiketinin hemen sonrasına eklenecek -->
+<div class="notes-container" id="notesContainer">
+    <div class="notes-button" id="toggleNotes">
+        <div class="tire-icon">
+            <div class="tire-outer"></div>
+            <div class="tire-inner"></div>
+            <div class="tire-spokes"></div>
+        </div>
+        <span>Araç Notlarım</span>
+    </div>
+    <div class="notes-panel">
+        <div class="notes-header">
+            <h3>Araç Notlarım</h3>
+            <button class="close-notes" id="closeNotes">×</button>
+        </div>
+        <div class="notes-content">
+            <div class="notes-list" id="notesList">
+                <!-- Notlar JavaScript ile buraya eklenecek -->
+            </div>
+            <div class="note-form">
+                <div class="form-group">
+                    <label for="noteTitle">Başlık</label>
+                    <input type="text" id="noteTitle" placeholder="Örn: Lastik Değişimi">
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Notunuz</label>
+                    <textarea id="noteContent" rows="4" placeholder="Notunuzu buraya yazın..."></textarea>
+                </div>
+                <button id="saveNote" class="save-button">Notu Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS kodu - <style> etiketi içine eklenecek -->
+<style>
+   /* Notlar Paneli Stilleri */
+    .notes-container {
+        position: fixed;
+        left: -320px; /* Changed from right to left */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 320px;
+        z-index: 1000;
+        transition: left 0.3s ease-in-out; /* Changed from right to left */
+        border-radius: 0 10px 10px 0; /* Added for overall container */
+    }
+
+    .notes-container.active {
+        left: 0; /* Changed from right to left */
+    }
+
+    .notes-button {
+        position: absolute;
+        top: 50%;
+        right: -60px; /* Changed from left to right */
+        transform: translateY(-50%);
+        background-color: #555; /* More modern dark grey */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 100px;
+        border-radius: 0 10px 10px 0; /* Changed from 10px 0 0 10px */
+        cursor: pointer;
+        box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Changed shadow direction */
+        transition: all 0.3s;
+    }
+
+    .notes-button:hover {
+        background-color: #333; /* Darker on hover */
+        width: 65px;
+    }
+
+    .notes-button span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-weight: bold;
+        margin-top: 5px;
+        font-size: 14px;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Subtle text shadow */
+    }
+
+    /* Tire icon styles remain mostly the same, you can adjust colors for more modern feel */
+    .tire-outer {
+        background-color: #444; /* Darker tire */
+        border: 2px solid #666;
+    }
+
+    .tire-inner {
+        background-color: #888;
+        border: 2px solid #777;
+    }
+
+    .tire-spokes::before, .tire-spokes::after {
+        background-color: #bbb; /* Lighter spokes */
+    }
+
+    .notes-panel {
+        background-color: #f0f0f0; /* Lighter panel background */
+        border-radius: 0 10px 10px 0; /* Changed from 10px 0 0 10px */
+        box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2); /* Changed shadow direction */
+        overflow: hidden;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        border-left: 5px solid #ff6b00; /* Added a distinct left border */
+    }
+
+    .notes-header {
+        background-color: #ff6b00; /* Main orange color */
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e65c00;
+    }
+
+    .notes-header h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600; /* Slightly bolder */
+    }
+
+    .close-notes {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 5px; /* Added some padding */
+        margin: 0;
+        line-height: 1;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    .close-notes:hover {
+        opacity: 1;
+    }
+
+    .notes-content {
+        padding: 15px;
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background-color: #ffffff; /* White background for content area */
+    }
+
+    .notes-list {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 15px;
+    }
+
+    .note-item {
+        background-color: #fff; /* White background for notes */
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-left: 4px solid #007bff; /* Changed border color for distinct notes */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Softer shadow */
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .note-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .note-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Vertically align items */
+        margin-bottom: 8px;
+    }
+
+    .note-title {
+        font-weight: bold;
+        color: #333;
+        font-size: 16px; /* Slightly larger title */
+    }
+
+    .note-date {
+        font-size: 12px;
+        color: #777; /* Softer date color */
+    }
+
+    .note-text {
+        color: #555; /* Slightly darker text for readability */
+        font-size: 14px;
+        line-height: 1.5;
+        white-space: pre-wrap; /* Preserves whitespace and line breaks */
+    }
+
+    .note-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px; /* Increased gap between buttons */
+        margin-top: 10px; /* More space from text */
+    }
+
+    .delete-note {
+        background-color: #dc3545; /* Bootstrap-like danger red */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px; /* Larger clickable area */
+        font-size: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .delete-note:hover {
+        background-color: #c82333;
+    }
+
+    .note-form {
+        background-color: #fff; /* White background for form */
+        border-radius: 8px;
+        padding: 15px;
+        border: 1px solid #e0e0e0; /* Lighter border */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very subtle shadow */
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px; /* More space for label */
+        color: #333;
+        font-weight: 600; /* Bolder label */
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px 12px; /* Slightly more padding */
+        border: 1px solid #ccc; /* Lighter border for inputs */
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: #ff6b00; /* Highlight on focus */
+        box-shadow: 0 0 0 0.2rem rgba(255, 107, 0, 0.25);
+        outline: none;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 80px; /* Minimum height for textarea */
+    }
+
+    .save-button {
+        background-color: #28a745; /* Green for save button */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    .save-button:hover {
+        background-color: #218838;
+    }
+
+    .no-notes {
+        text-align: center;
+        padding: 20px;
+        color: #999;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    /* Responsive Tasarım - also need to adjust */
+    @media (max-width: 768px) {
+        .notes-container {
+            width: 280px; /* Slightly smaller on small screens */
+            left: -280px;
+        }
+        
+        .notes-button {
+            width: 45px; /* Smaller button */
+            height: 70px;
+            right: -45px; /* Adjusted position */
+        }
+        
+        .notes-button span {
+            font-size: 11px;
+        }
+        
+        .tire-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .tire-outer {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .tire-inner {
+            top: 5px;
+            left: 5px;
+            width: 10px;
+            height: 10px;
+        }
+        
+        .tire-spokes {
+            top: 3px;
+            left: 3px;
+            width: 14px;
+            height: 14px;
+        }
+        
+        .tire-spokes::before {
+            top: 6px;
+            width: 14px;
+        }
+        
+        .tire-spokes::after {
+            left: 6px;
+            height: 14px;
+        }
+    }
+
+    /* Dark Mode Stilleri - adjust for new colors */
+    body.dark-mode .notes-panel {
+        background-color: #262626; /* Darker panel background */
+        border-left-color: #ff6b00; /* Keep accent color */
+    }
+    
+    body.dark-mode .notes-button {
+        background-color: #444; /* Dark mode button */
+    }
+
+    body.dark-mode .notes-button:hover {
+        background-color: #222;
+    }
+
+    body.dark-mode .notes-header {
+        background-color: #ff6b00; /* Keep accent color */
+        border-bottom-color: #e65c00;
+    }
+
+    body.dark-mode .close-notes {
+        color: white;
+    }
+
+    body.dark-mode .notes-content {
+        background-color: #1a1a1a; /* Dark content background */
+    }
+
+    body.dark-mode .note-item {
+        background-color: #2d2d2d;
+        border-left-color: #0095ff; /* Dark mode note border */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    body.dark-mode .note-title {
+        color: #e0e0e0;
+    }
+    
+    body.dark-mode .note-text {
+        color: #b0b0b0;
+    }
+
+    body.dark-mode .note-date {
+        color: #888;
+    }
+    
+    body.dark-mode .note-form {
+        background-color: #2d2d2d;
+        border: 1px solid #444;
+    }
+    
+    body.dark-mode .form-group label {
+        color: #e0e0e0;
+    }
+    
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group textarea {
+        background-color: #3d3d3d;
+        border: 1px solid #555;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .form-group input:focus,
+    body.dark-mode .form-group textarea:focus {
+        border-color: #ff6b00;
+        box-shadow: 0 0 0 0.2rem rgba(255, 107, 0, 0.25);
+    }
+    
+    body.dark-mode .save-button {
+        background-color: #28a745;
+    }
+
+    body.dark-mode .save-button:hover {
+        background-color: #218838;
+    }
+
+    body.dark-mode .delete-note {
+        background-color: #dc3545;
+    }
+
+    body.dark-mode .delete-note:hover {
+        background-color: #c82333;
+    }
+
+    body.dark-mode .no-notes {
+        color: #888;
+    }
+    
+
+
+    /* Chatbot Styles */
+    .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px; /* Position on the right, opposite to notes */
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .chatbot-button {
+        background-color: #ff6b00; /* Theme accent color */
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%; /* Circular button */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .chatbot-button:hover {
+        background-color: #e65c00;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .chatbot-button i {
+        font-size: 24px;
+        margin-bottom: 3px;
+    }
+
+    .chatbot-body {
+        background-color: #f0f0f0; /* Lighter background for the chat window */
+        width: 320px;
+        height: 400px; /* Fixed height for chat window */
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-top: 15px; /* Space between button and window */
+        border: 1px solid #ddd;
+        display: none; /* Hidden by default */
+    }
+
+    .chatbot-header {
+        background-color: #333; /* Dark header */
+        color: white;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        border-bottom: 1px solid #444;
+    }
+
+    .chatbot-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .close-chatbot {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 5px;
+        line-height: 1;
+        opacity: 0.8;
+        transition: opacity 0.3s;
+    }
+
+    .close-chatbot:hover {
+        opacity: 1;
+    }
+
+    .chatbot-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background-color: #fff; /* White background for messages */
+        border-bottom: 1px solid #eee;
+    }
+
+    .chatbot-message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 15px;
+        max-width: 80%;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .chatbot-user {
+        background-color: #ff6b00; /* User messages in accent color */
+        color: white;
+        align-self: flex-end; /* Align user messages to the right */
+        margin-left: auto;
+        border-bottom-right-radius: 2px;
+    }
+
+    .chatbot-bot {
+        background-color: #e2e2e2; /* Bot messages in light grey */
+        color: #333;
+        align-self: flex-start; /* Align bot messages to the left */
+        margin-right: auto;
+        border-bottom-left-radius: 2px;
+    }
+
+    .chatbot-input-area {
+        display: flex;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-top: 1px solid #ddd;
+    }
+
+    .chatbot-input-area input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        margin-right: 10px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+    }
+
+    .chatbot-input-area input:focus {
+        border-color: #ff6b00;
+    }
+
+    .chatbot-input-area button {
+        background-color: #007bff; /* A standard blue for action, or use theme color */
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .chatbot-input-area button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Dark Mode for Chatbot */
+    body.dark-mode .chatbot-body {
+        background-color: #262626;
+        border: 1px solid #333;
+    }
+
+    body.dark-mode .chatbot-header {
+        background-color: #444;
+        border-bottom: 1px solid #555;
+    }
+
+    body.dark-mode .chatbot-messages {
+        background-color: #1a1a1a;
+        border-bottom: 1px solid #222;
+    }
+
+    body.dark-mode .chatbot-bot {
+        background-color: #3d3d3d;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .chatbot-user {
+        background-color: #ff6b00; /* Keep accent color */
+        color: white;
+    }
+
+    body.dark-mode .chatbot-input-area {
+        background-color: #262626;
+        border-top: 1px solid #333;
+    }
+
+    body.dark-mode .chatbot-input-area input {
+        background-color: #3d3d3d;
+        border: 1px solid #555;
+        color: #e0e0e0;
+    }
+
+    body.dark-mode .chatbot-input-area input:focus {
+        border-color: #ff6b00;
+    }
+
+    body.dark-mode .chatbot-input-area button {
+        background-color: #007bff;
+    }
+
+    body.dark-mode .chatbot-input-area button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive adjustments for chatbot */
+    @media (max-width: 768px) {
+        .chatbot-container {
+            bottom: 10px;
+            right: 10px;
+        }
+        .chatbot-button {
+            width: 50px;
+            height: 50px;
+            font-size: 12px;
+        }
+        .chatbot-button i {
+            font-size: 20px;
+        }
+        .chatbot-body {
+            width: 280px;
+            height: 350px;
+        }
+        .chatbot-header h3 {
+            font-size: 16px;
+        }
+        .chatbot-message {
+            font-size: 13px;
+            padding: 6px 10px;
+        }
+        .chatbot-input-area input {
+            padding: 8px;
+            font-size: 13px;
+        }
+        .chatbot-input-area button {
+            padding: 8px 12px;
+        }
+    }
+</style>
+    <div class="tires-animation-container" id="tiresContainer"></div>
     <button id="scrollToTop">⬆</button>
 
     <!-- Header -->
     <header>
+        
         <button id="scrollToTop" style="position: fixed; bottom: 20px; right: 20px; display: none;">⬆</button>
 
         <div class="container">
@@ -736,7 +1610,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Rot Balans Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Rot Balans">
+                <img class="service-image" src="https://cdn.pixabay.com/photo/2021/04/09/08/33/tire-6163351_1280.jpg" alt="Rot Balans">
                 <p>Başkent Rot-Balans olarak, aracınızın yol tutuşunu ve sürüş konforunu en üst düzeye çıkarmak için profesyonel rot balans hizmeti sunuyoruz. Uzman ekibimiz ve modern ekipmanlarımızla, aracınızın tekerlek düzenini hassas bir şekilde ayarlıyoruz.</p>
                 <p>Rot balans ayarı, aracınızın tekerleklerinin doğru açıda ve hizada olmasını sağlayan önemli bir bakım işlemidir. Düzgün yapılmayan rot balans ayarı, lastiklerin düzensiz aşınmasına, yakıt tüketiminin artmasına ve sürüş konforunun azalmasına neden olabilir.</p>
                 <p>Hizmetimiz kapsamında:</p>
@@ -770,7 +1644,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Lastik Tamiri Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Lastik Tamiri">
+                <img class="service-image" src="https://cdn.pixabay.com/photo/2018/01/24/18/43/car-3104618_1280.jpg" alt="Lastik Tamiri">
                 <p>Başkent Rot-Balans olarak, lastik tamiri konusunda hızlı ve güvenilir hizmet sunmaktayız. Profesyonel ekibimiz ve modern ekipmanlarımızla, lastiklerinizdeki sorunları en kısa sürede çözüyoruz.</p>
                 <p>Lastiğinizde çivi, vida gibi yabancı cisimler, yırtıklar veya hava kaçakları gibi sorunlar yaşıyorsanız, uzman ekibimiz en uygun çözümü sunacaktır. Kullandığımız yüksek kaliteli malzemeler ve teknikler sayesinde, tamir edilen lastikleriniz güvenli bir şekilde kullanılmaya devam edilebilir.</p>
                 <p>Lastik tamiri hizmetlerimiz:</p>
@@ -798,7 +1672,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Jant Düzeltme Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Jant Düzeltme">
+                <img class="service-image" src="https://cdn.pixabay.com/photo/2019/02/10/16/09/wheel-4008137_1280.jpg" alt="Jant Düzeltme">
                 <p>Başkent Rot-Balans olarak, jant düzeltme konusunda profesyonel hizmet sunmaktayız. Çarpma, çukur veya kaldırım taşlarına sürtünme sonucu deforme olan jantlarınızı, ileri teknoloji ekipmanlarımızla orijinal formuna kavuşturuyoruz.</p>
                 <p>Jant hasarları, sadece görsel açıdan değil, aynı zamanda aracınızın sürüş performansı ve güvenliği açısından da önemli sorunlara yol açabilir. Deforme olmuş jantlar, titreşim, balans bozukluğu ve lastik aşınması gibi problemlere neden olabilir.</p>
                 <p>Jant düzeltme hizmetlerimiz:</p>
@@ -825,7 +1699,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Far Ayarı Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Far Ayarı">
+               <img class="service-image" src="https://cdn.pixabay.com/photo/2018/05/20/09/35/car-3415174_1280.jpg" alt="Far Ayarı">
                 <p>Başkent Rot-Balans olarak, profesyonel far ayarı hizmeti sunmaktayız. Doğru ayarlanmış farlar, gece sürüşlerinde güvenliğinizi artırır ve karşıdan gelen sürücüleri rahatsız etmez.</p>
                 <p>Far ayarı, aracınızın farlarının doğru açıda ve yükseklikte olmasını sağlayan önemli bir bakım işlemidir. Yanlış ayarlanmış farlar, görüş mesafenizi azaltabilir veya karşıdan gelen sürücüleri rahatsız edebilir.</p>
                 <p>Far ayarı hizmetlerimiz:</p>
@@ -859,7 +1733,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Lastik Oteli Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Lastik Oteli">
+               <img class="service-image" src="https://cdn.pixabay.com/photo/2017/08/07/21/28/tire-2608149_1280.jpg" alt="Lastik Oteli">
                 <p>Başkent Rot-Balans olarak, mevsimlik lastik saklama hizmeti sunmaktayız. Kış ve yaz lastiklerinizi, uygun koşullarda saklayarak, lastiklerinizin ömrünü uzatıyor ve size depolama kolaylığı sağlıyoruz.</p>
                 <p>Lastik oteli hizmeti, özellikle kış ve yaz lastiklerini düzenli olarak değiştiren araç sahipleri için ideal bir çözümdür. Kullanılmayan lastiklerinizi evde veya garajda saklamak yerine, profesyonel koşullarda saklayarak, lastiklerinizin ömrünü uzatabilirsiniz.</p>
                 <p>Lastik oteli hizmetimiz kapsamında:</p>
@@ -886,7 +1760,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>TPMS (Lastik Basınç Sensörü) Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="TPMS">
+                <img class="service-image" src="https://cdn.pixabay.com/photo/2019/07/04/18/14/tire-4316131_1280.jpg" alt="TPMS">
                 <p>Başkent Rot-Balans olarak, TPMS (Lastik Basınç İzleme Sistemi) konusunda profesyonel hizmet sunmaktayız. Bu sistem, aracınızın lastik basıncını sürekli olarak izler ve basınç düşüşü durumunda sizi uyarır.</p>
                 <p>TPMS, sürüş güvenliğinizi artıran ve lastik ömrünü uzatan önemli bir sistemdir. Düşük lastik basıncı, yakıt tüketimini artırır, lastik aşınmasını hızlandırır ve sürüş güvenliğini tehlikeye atar.</p>
                 <p>TPMS hizmetlerimiz:</p>
@@ -915,7 +1789,7 @@ input:checked + .slider:before {
             </div>
             <div class="service-content">
                 <h2>Nitrojen Dolumu Hizmeti</h2>
-                <img class="service-image" src="/api/placeholder/800/400" alt="Nitrojen Dolumu">
+              <img class="service-image" src="https://cdn.pixabay.com/photo/2016/06/17/10/22/car-1463137_1280.jpg" alt="Nitrojen Dolumu">
                 <p>Başkent Rot-Balans olarak, lastiklerinize profesyonel nitrojen dolum hizmeti sunmaktayız. Nitrojen gazı, normal havaya göre daha stabil özellikte olup, lastiklerinizin performansını ve ömrünü artıran önemli bir faktördür.</p>
                 <p>Normal hava, içerisinde oksijen, su buharı ve diğer gazları barındırır. Bu gazlar, lastik içerisinde basınç ve sıcaklık değişimlerine neden olabilir. Nitrojen ise, bu değişimleri minimize ederek lastiklerinizin daha stabil çalışmasını sağlar.</p>
                 <p>Nitrojen dolumunun avantajları:</p>
@@ -980,6 +1854,25 @@ input:checked + .slider:before {
         </div>
     </div>
 </section>
+<div class="chatbot-container">
+    <div class="chatbot-button" onclick="toggleChatbot()">
+        <i class="fa-solid fa-message"></i>
+        <span>Chat</span>
+    </div>
+    <div class="chatbot-body" id="chatbot-body">
+        <div class="chatbot-header">
+            <h3>Başkent Rot-Balans Destek</h3>
+            <button class="close-chatbot" onclick="toggleChatbot()">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="chatbot-message chatbot-bot">Merhaba! Size nasıl yardımcı olabilirim?</div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Mesajınızı yazın..." onkeyup="if(event.keyCode === 13) sendMessage()">
+            <button onclick="sendMessage()">Gönder</button>
+        </div>
+    </div>
+</div>
 
 <!-- JavaScript for page switching -->
  
@@ -1105,7 +1998,7 @@ function scrollToFooter() {
     }
 
     toggleSwitch.addEventListener('change', switchTheme, false);
-    // Yorumlar için JavaScript kodu
+   // Yorumlar için JavaScript kodu
 document.addEventListener('DOMContentLoaded', function() {
     // Yerel depolamadan yorumları yükle
     loadComments();
@@ -1122,8 +2015,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const commentText = document.getElementById('commentText').value;
             const date = new Date();
             
+            // Benzersiz ID oluştur
+            const commentId = 'comment_' + Date.now();
+            
             // Yeni yorum nesnesi oluştur
             const newComment = {
+                id: commentId,
                 name: name,
                 email: email,
                 text: commentText,
@@ -1138,6 +2035,30 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Kullanıcıya başarılı mesajı göster
             alert('Yorumunuz başarıyla gönderildi!');
+        });
+    }
+    
+    // Yorumlar listesindeki tıklamaları dinle (silme işlemi için)
+    const commentsList = document.getElementById('commentsList');
+    if (commentsList) {
+        commentsList.addEventListener('click', function(e) {
+            if (e.target.classList.contains('delete-comment')) {
+                const commentId = e.target.getAttribute('data-id');
+                if (confirm('Bu yorumu silmek istediğinizden emin misiniz?')) {
+                    deleteComment(commentId);
+                }
+            }
+        });
+    }
+    
+    // Tüm yorumları silme butonu
+    const deleteAllButton = document.getElementById('deleteAllComments');
+    if (deleteAllButton) {
+        deleteAllButton.addEventListener('click', function() {
+            if (confirm('Tüm yorumları silmek istediğinizden emin misiniz?')) {
+                localStorage.removeItem('siteComments');
+                loadComments();
+            }
         });
     }
 });
@@ -1168,6 +2089,7 @@ function loadComments() {
             <div class="comment-header">
                 <div class="comment-author">${comment.name}</div>
                 <div class="comment-date">${comment.date}</div>
+                <button class="delete-comment" data-id="${comment.id}">Sil</button>
             </div>
             <div class="comment-body">
                 ${comment.text}
@@ -1176,6 +2098,15 @@ function loadComments() {
         
         commentsList.appendChild(commentElement);
     });
+    
+    // Tüm yorumları silme butonu ekle
+    if (comments.length > 0) {
+        const deleteAllButton = document.createElement('button');
+        deleteAllButton.id = 'deleteAllComments';
+        deleteAllButton.className = 'delete-all-button';
+        deleteAllButton.textContent = 'Tüm Yorumları Sil';
+        commentsList.appendChild(deleteAllButton);
+    }
 }
 
 // Yeni yorumu kaydet
@@ -1192,6 +2123,253 @@ function saveComment(comment) {
     // Yorumları yeniden yükle
     loadComments();
 }
+
+// Yorumu sil
+function deleteComment(commentId) {
+    // Yerel depolamadan yorumları al
+    let comments = JSON.parse(localStorage.getItem('siteComments')) || [];
+    
+    // Silinecek yorumu filtrele
+    comments = comments.filter(comment => comment.id !== commentId);
+    
+    // Güncellenmiş listeyi yerel depolamaya kaydet
+    localStorage.setItem('siteComments', JSON.stringify(comments));
+    
+    // Yorumları yeniden yükle
+    loadComments();
+}
+// Bu JavaScript kodunu sayfanızdaki mevcut script etiketinin içine ekleyin
+
+// Notlar için işlevler
+document.addEventListener('DOMContentLoaded', function() {
+    // Not paneli için elementleri seç
+    const notesContainer = document.getElementById('notesContainer');
+    const toggleNotes = document.getElementById('toggleNotes');
+    const closeNotes = document.getElementById('closeNotes');
+    const saveNote = document.getElementById('saveNote');
+    const notesList = document.getElementById('notesList');
+    const noteTitle = document.getElementById('noteTitle');
+    const noteContent = document.getElementById('noteContent');
+
+    // Not panelini aç/kapat
+    toggleNotes.addEventListener('click', function() {
+        notesContainer.classList.toggle('active');
+    });
+
+    closeNotes.addEventListener('click', function() {
+        notesContainer.classList.remove('active');
+    });
+
+    // Notları yükle
+    loadNotes();
+
+    // Not kaydetme
+    saveNote.addEventListener('click', function() {
+        const title = noteTitle.value.trim();
+        const content = noteContent.value.trim();
+
+        if (!title || !content) {
+            alert('Lütfen başlık ve not içeriğini doldurun.');
+            return;
+        }
+
+        // Yeni not oluştur
+        const noteId = 'note_' + Date.now();
+        const date = new Date();
+        
+        const newNote = {
+            id: noteId,
+            title: title,
+            content: content,
+            date: date.toLocaleDateString('tr-TR')
+        };
+
+        // Notu kaydet
+        saveNoteToStorage(newNote);
+
+        // Formu temizle
+        noteTitle.value = '';
+        noteContent.value = '';
+
+        // Başarı mesajı
+        alert('Notunuz kaydedildi!');
+    });
+
+    // Not silme işlemi için olay dinleyicisi
+    notesList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('delete-note')) {
+            const noteId = e.target.getAttribute('data-id');
+            if (confirm('Bu notu silmek istediğinizden emin misiniz?')) {
+                deleteNote(noteId);
+            }
+        }
+    });
+});
+
+// Notları yerel depolamadan yükle
+function loadNotes() {
+    const notesList = document.getElementById('notesList');
+    if (!notesList) return;
+
+    // Yerel depolamadan notları al
+    let notes = JSON.parse(localStorage.getItem('carNotes')) || [];
+
+    // Notlar listesini temizle
+    notesList.innerHTML = '';
+
+    // Eğer not yoksa mesaj göster
+    if (notes.length === 0) {
+        notesList.innerHTML = '<div class="no-notes">Henüz not eklenmemiş.</div>';
+        return;
+    }
+
+    // Notları en yeniden en eskiye doğru sırala
+    notes.sort((a, b) => {
+        return new Date(b.timestamp || 0) - new Date(a.timestamp || 0);
+    });
+
+    // Notları ekle
+    notes.forEach(note => {
+        const noteElement = document.createElement('div');
+        noteElement.className = 'note-item';
+        
+        noteElement.innerHTML = `
+            <div class="note-header">
+                <div class="note-title">${note.title}</div>
+                <div class="note-date">${note.date}</div>
+            </div>
+            <div class="note-text">${note.content}</div>
+            <div class="note-actions">
+                <button class="delete-note" data-id="${note.id}">Sil</button>
+            </div>
+        `;
+        
+        notesList.appendChild(noteElement);
+    });
+}
+
+// Yeni notu kaydet
+function saveNoteToStorage(note) {
+    // Yerel depolamadan mevcut notları al
+    let notes = JSON.parse(localStorage.getItem('carNotes')) || [];
+    
+    // Zaman damgası ekle (sıralama için)
+    note.timestamp = new Date().getTime();
+    
+    // Yeni notu ekle
+    notes.push(note);
+    
+    // Yerel depolamaya kaydet
+    localStorage.setItem('carNotes', JSON.stringify(notes));
+    
+    // Notları yeniden yükle
+    loadNotes();
+}
+
+// Notu sil
+function deleteNote(noteId) {
+    // Yerel depolamadan notları al
+    let notes = JSON.parse(localStorage.getItem('carNotes')) || [];
+    
+    // Silinecek notu filtrele
+    notes = notes.filter(note => note.id !== noteId);
+    
+    // Güncellenmiş listeyi yerel depolamaya kaydet
+    localStorage.setItem('carNotes', JSON.stringify(notes));
+    
+    // Notları yeniden yükle
+    loadNotes();
+}
+// Chatbot Functions
+function toggleChatbot() {
+    const chatbotBody = document.getElementById('chatbot-body');
+    chatbotBody.style.display = chatbotBody.style.display === 'flex' ? 'none' : 'flex';
+    if (chatbotBody.style.display === 'flex') {
+        const messages = document.getElementById('chatbot-messages');
+        messages.scrollTop = messages.scrollHeight; // Scroll to bottom on open
+    }
+}
+
+function sendMessage() {
+    const input = document.getElementById('chatbot-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    const messages = document.getElementById('chatbot-messages');
+
+    // Kullanıcı mesajı
+    const userMsg = document.createElement('div');
+    userMsg.className = 'chatbot-message chatbot-user';
+    userMsg.textContent = msg;
+    messages.appendChild(userMsg);
+
+    input.value = ''; // Clear input immediately
+
+    // Bot cevabı için gecikme
+    setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chatbot-message chatbot-bot';
+        botMsg.textContent = getBotResponse(msg);
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight; // Scroll to bottom after bot reply
+    }, 500); // 0.5 saniye gecikme
+}
+
+// Basit yanıt sistemi (isteğe göre genişletilebilir)
+function getBotResponse(message) {
+    message = message.toLowerCase();
+
+    if (message.includes("merhaba") || message.includes("selam")) {
+        return "Merhaba! Başkent Rot-Balans'a hoş geldiniz. Size nasıl yardımcı olabilirim? (Örn: 'fiyat', 'randevu', 'adres')";
+    }
+    if (message.includes("fiyat") || message.includes("ücret") || message.includes("ne kadar")) {
+        return "Fiyat bilgisi için lütfen 0544 041 59 29 numaralı telefondan bize ulaşın veya dükkanımızı ziyaret edin.";
+    }
+    if (message.includes("randevu") || message.includes("saat") || message.includes("gelmek istiyorum")) {
+        return "Randevu almak için 0544 041 59 29 numaralı telefonumuzu arayabilirsiniz. Genellikle önceden randevu almanızı tavsiye ederiz.";
+    }
+    if (message.includes("açık mı") || message.includes("çalışma saatleri")) {
+        return "Hafta içi 09:00 - 18:00 arası açığız. Cumartesi günleri 09:00 - 15:00 arası hizmet veriyoruz. Pazar günleri kapalıyız.";
+    }
+    if (message.includes("adres") || message.includes("neredesiniz") || message.includes("konum")) {
+        return "Adresimiz: Toptancı Hali Yanı, Rot Balans Merkezi, Akyurt/Ankara. Google Haritalar'dan aratabilirsiniz.";
+    }
+    if (message.includes("hizmetler") || message.includes("ne yapıyorsunuz")) {
+        return "Rot balans ayarı, lastik değişimi, jant düzeltme, lastik tamiri gibi hizmetler sunmaktayız.";
+    }
+    if (message.includes("iletişim") || message.includes("telefon")) {
+        return "Bize 0544 041 59 29 numaralı telefondan ulaşabilirsiniz.";
+    }
+    if (message.includes("teşekkür ederim") || message.includes("sağ ol")) {
+        return "Rica ederim, başka bir konuda yardımcı olabilir miyim?";
+    }
+    if (message.includes("yol yardımı")) {
+        return "Maalesef yol yardım hizmetimiz bulunmamaktadır.";
+    }
+    if (message.includes("lastik tamiri")) {
+        return "Evet, lastik tamiri ve değişim hizmetlerimiz mevcuttur.";
+    }
+    if (message.includes("web site")) {
+        return "Evet, burası bizim web sitemiz!";
+    }
+    if (message.includes("isim") || message.includes("adınız")) {
+        return "Ben Başkent Rot-Balans'ın sanal asistanıyım. Size yardımcı olmak için buradayım.";
+    }
+
+    return "Üzgünüm, sorunuzu tam olarak anlayamadım. Daha açık bir şekilde sorabilir misiniz veya yukarıdaki örnek anahtar kelimeleri kullanabilirsiniz.";
+}
+
+// Add event listener for Enter key on chatbot input
+document.addEventListener('DOMContentLoaded', () => {
+    const chatbotInput = document.getElementById('chatbot-input');
+    if (chatbotInput) {
+        chatbotInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    }
+});
 </script>
 
 </body>
