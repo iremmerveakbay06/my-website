@@ -799,22 +799,21 @@ input:checked + .slider:before {
 }
 #scrollToTop {
     position: fixed;
-    bottom: 20px;
+    bottom: 90px; /* chatbot butonunun üstüne alınır */
     right: 20px;
-    width: 60px;  /* Buton genişliği */
-    height: 60px; /* Buton yüksekliği */
-    font-size: 24px; /* Buton içindeki ikon veya yazının boyutu */
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
     background-color: #ff6b00;
     color: white;
     border: none;
-    border-radius: 50%; /* Yuvarlak buton */
+    border-radius: 50%;
     cursor: pointer;
     display: none;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Üzerine gelindiğinde efekti */
 #scrollToTop:hover {
     background-color: #e65c00;
     transform: scale(1.1);
@@ -1254,251 +1253,39 @@ input:checked + .slider:before {
     
 
 
-    /* Chatbot Styles */
-    .chatbot-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px; /* Position on the right, opposite to notes */
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
+.poe-chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6b00;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 999;
+}
 
-    .chatbot-button {
-        background-color: #ff6b00; /* Theme accent color */
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%; /* Circular button */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        text-align: center;
-        font-size: 14px;
-        font-weight: bold;
-    }
+.poe-chatbot-button:hover {
+    background-color: #e65c00;
+    transform: translateY(-2px);
+}
 
-    .chatbot-button:hover {
-        background-color: #e65c00;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .chatbot-button i {
-        font-size: 24px;
-        margin-bottom: 3px;
-    }
-
-    .chatbot-body {
-        background-color: #f0f0f0; /* Lighter background for the chat window */
-        width: 320px;
-        height: 400px; /* Fixed height for chat window */
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        margin-top: 15px; /* Space between button and window */
-        border: 1px solid #ddd;
-        display: none; /* Hidden by default */
-    }
-
-    .chatbot-header {
-        background-color: #333; /* Dark header */
-        color: white;
-        padding: 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 16px;
-        border-bottom: 1px solid #444;
-    }
-
-    .chatbot-header h3 {
-        margin: 0;
-        font-size: 18px;
-    }
-
-    .close-chatbot {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0 5px;
-        line-height: 1;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-    }
-
-    .close-chatbot:hover {
-        opacity: 1;
-    }
-
-    .chatbot-messages {
-        flex: 1;
-        padding: 15px;
-        overflow-y: auto;
-        background-color: #fff; /* White background for messages */
-        border-bottom: 1px solid #eee;
-    }
-
-    .chatbot-message {
-        margin-bottom: 10px;
-        padding: 8px 12px;
-        border-radius: 15px;
-        max-width: 80%;
-        font-size: 14px;
-        line-height: 1.4;
-    }
-
-    .chatbot-user {
-        background-color: #ff6b00; /* User messages in accent color */
-        color: white;
-        align-self: flex-end; /* Align user messages to the right */
-        margin-left: auto;
-        border-bottom-right-radius: 2px;
-    }
-
-    .chatbot-bot {
-        background-color: #e2e2e2; /* Bot messages in light grey */
-        color: #333;
-        align-self: flex-start; /* Align bot messages to the left */
-        margin-right: auto;
-        border-bottom-left-radius: 2px;
-    }
-
-    .chatbot-input-area {
-        display: flex;
-        padding: 10px;
-        background-color: #f0f0f0;
-        border-top: 1px solid #ddd;
-    }
-
-    .chatbot-input-area input {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        margin-right: 10px;
-        font-size: 14px;
-        outline: none;
-        transition: border-color 0.2s ease;
-    }
-
-    .chatbot-input-area input:focus {
-        border-color: #ff6b00;
-    }
-
-    .chatbot-input-area button {
-        background-color: #007bff; /* A standard blue for action, or use theme color */
-        color: white;
-        border: none;
-        border-radius: 20px;
-        padding: 10px 15px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-
-    .chatbot-input-area button:hover {
-        background-color: #0056b3;
-    }
-
-    /* Dark Mode for Chatbot */
-    body.dark-mode .chatbot-body {
-        background-color: #262626;
-        border: 1px solid #333;
-    }
-
-    body.dark-mode .chatbot-header {
-        background-color: #444;
-        border-bottom: 1px solid #555;
-    }
-
-    body.dark-mode .chatbot-messages {
-        background-color: #1a1a1a;
-        border-bottom: 1px solid #222;
-    }
-
-    body.dark-mode .chatbot-bot {
-        background-color: #3d3d3d;
-        color: #e0e0e0;
-    }
-
-    body.dark-mode .chatbot-user {
-        background-color: #ff6b00; /* Keep accent color */
-        color: white;
-    }
-
-    body.dark-mode .chatbot-input-area {
-        background-color: #262626;
-        border-top: 1px solid #333;
-    }
-
-    body.dark-mode .chatbot-input-area input {
-        background-color: #3d3d3d;
-        border: 1px solid #555;
-        color: #e0e0e0;
-    }
-
-    body.dark-mode .chatbot-input-area input:focus {
-        border-color: #ff6b00;
-    }
-
-    body.dark-mode .chatbot-input-area button {
-        background-color: #007bff;
-    }
-
-    body.dark-mode .chatbot-input-area button:hover {
-        background-color: #0056b3;
-    }
-
-    /* Responsive adjustments for chatbot */
-    @media (max-width: 768px) {
-        .chatbot-container {
-            bottom: 10px;
-            right: 10px;
-        }
-        .chatbot-button {
-            width: 50px;
-            height: 50px;
-            font-size: 12px;
-        }
-        .chatbot-button i {
-            font-size: 20px;
-        }
-        .chatbot-body {
-            width: 280px;
-            height: 350px;
-        }
-        .chatbot-header h3 {
-            font-size: 16px;
-        }
-        .chatbot-message {
-            font-size: 13px;
-            padding: 6px 10px;
-        }
-        .chatbot-input-area input {
-            padding: 8px;
-            font-size: 13px;
-        }
-        .chatbot-input-area button {
-            padding: 8px 12px;
-        }
-    }
+   
 </style>
     <div class="tires-animation-container" id="tiresContainer"></div>
     <button id="scrollToTop">⬆</button>
 
     <!-- Header -->
     <header>
-        
+        <a href="https://poe.com/BotSNVNFXTCVK" target="_blank" class="poe-chatbot-button">
+    💬 Chatbot
+</a>
+
         <button id="scrollToTop" style="position: fixed; bottom: 20px; right: 20px; display: none;">⬆</button>
 
         <div class="container">
@@ -1854,25 +1641,7 @@ input:checked + .slider:before {
         </div>
     </div>
 </section>
-<div class="chatbot-container">
-    <div class="chatbot-button" onclick="toggleChatbot()">
-        <i class="fa-solid fa-message"></i>
-        <span>Chat</span>
-    </div>
-    <div class="chatbot-body" id="chatbot-body">
-        <div class="chatbot-header">
-            <h3>Başkent Rot-Balans Destek</h3>
-            <button class="close-chatbot" onclick="toggleChatbot()">&times;</button>
-        </div>
-        <div class="chatbot-messages" id="chatbot-messages">
-            <div class="chatbot-message chatbot-bot">Merhaba! Size nasıl yardımcı olabilirim?</div>
-        </div>
-        <div class="chatbot-input-area">
-            <input type="text" id="chatbot-input" placeholder="Mesajınızı yazın..." onkeyup="if(event.keyCode === 13) sendMessage()">
-            <button onclick="sendMessage()">Gönder</button>
-        </div>
-    </div>
-</div>
+
 
 <!-- JavaScript for page switching -->
  
@@ -2281,95 +2050,7 @@ function deleteNote(noteId) {
     loadNotes();
 }
 // Chatbot Functions
-function toggleChatbot() {
-    const chatbotBody = document.getElementById('chatbot-body');
-    chatbotBody.style.display = chatbotBody.style.display === 'flex' ? 'none' : 'flex';
-    if (chatbotBody.style.display === 'flex') {
-        const messages = document.getElementById('chatbot-messages');
-        messages.scrollTop = messages.scrollHeight; // Scroll to bottom on open
-    }
-}
 
-function sendMessage() {
-    const input = document.getElementById('chatbot-input');
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    const messages = document.getElementById('chatbot-messages');
-
-    // Kullanıcı mesajı
-    const userMsg = document.createElement('div');
-    userMsg.className = 'chatbot-message chatbot-user';
-    userMsg.textContent = msg;
-    messages.appendChild(userMsg);
-
-    input.value = ''; // Clear input immediately
-
-    // Bot cevabı için gecikme
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chatbot-message chatbot-bot';
-        botMsg.textContent = getBotResponse(msg);
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight; // Scroll to bottom after bot reply
-    }, 500); // 0.5 saniye gecikme
-}
-
-// Basit yanıt sistemi (isteğe göre genişletilebilir)
-function getBotResponse(message) {
-    message = message.toLowerCase();
-
-    if (message.includes("merhaba") || message.includes("selam")) {
-        return "Merhaba! Başkent Rot-Balans'a hoş geldiniz. Size nasıl yardımcı olabilirim? (Örn: 'fiyat', 'randevu', 'adres')";
-    }
-    if (message.includes("fiyat") || message.includes("ücret") || message.includes("ne kadar")) {
-        return "Fiyat bilgisi için lütfen 0544 041 59 29 numaralı telefondan bize ulaşın veya dükkanımızı ziyaret edin.";
-    }
-    if (message.includes("randevu") || message.includes("saat") || message.includes("gelmek istiyorum")) {
-        return "Randevu almak için 0544 041 59 29 numaralı telefonumuzu arayabilirsiniz. Genellikle önceden randevu almanızı tavsiye ederiz.";
-    }
-    if (message.includes("açık mı") || message.includes("çalışma saatleri")) {
-        return "Hafta içi 09:00 - 18:00 arası açığız. Cumartesi günleri 09:00 - 15:00 arası hizmet veriyoruz. Pazar günleri kapalıyız.";
-    }
-    if (message.includes("adres") || message.includes("neredesiniz") || message.includes("konum")) {
-        return "Adresimiz: Toptancı Hali Yanı, Rot Balans Merkezi, Akyurt/Ankara. Google Haritalar'dan aratabilirsiniz.";
-    }
-    if (message.includes("hizmetler") || message.includes("ne yapıyorsunuz")) {
-        return "Rot balans ayarı, lastik değişimi, jant düzeltme, lastik tamiri gibi hizmetler sunmaktayız.";
-    }
-    if (message.includes("iletişim") || message.includes("telefon")) {
-        return "Bize 0544 041 59 29 numaralı telefondan ulaşabilirsiniz.";
-    }
-    if (message.includes("teşekkür ederim") || message.includes("sağ ol")) {
-        return "Rica ederim, başka bir konuda yardımcı olabilir miyim?";
-    }
-    if (message.includes("yol yardımı")) {
-        return "Maalesef yol yardım hizmetimiz bulunmamaktadır.";
-    }
-    if (message.includes("lastik tamiri")) {
-        return "Evet, lastik tamiri ve değişim hizmetlerimiz mevcuttur.";
-    }
-    if (message.includes("web site")) {
-        return "Evet, burası bizim web sitemiz!";
-    }
-    if (message.includes("isim") || message.includes("adınız")) {
-        return "Ben Başkent Rot-Balans'ın sanal asistanıyım. Size yardımcı olmak için buradayım.";
-    }
-
-    return "Üzgünüm, sorunuzu tam olarak anlayamadım. Daha açık bir şekilde sorabilir misiniz veya yukarıdaki örnek anahtar kelimeleri kullanabilirsiniz.";
-}
-
-// Add event listener for Enter key on chatbot input
-document.addEventListener('DOMContentLoaded', () => {
-    const chatbotInput = document.getElementById('chatbot-input');
-    if (chatbotInput) {
-        chatbotInput.addEventListener('keyup', function(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        });
-    }
-});
 </script>
 
 </body>
